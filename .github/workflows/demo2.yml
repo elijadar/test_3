@@ -1,9 +1,11 @@
-name: Events Push to master demo 2
+name: Events Push to master Demo 2
 on:
   workflow_dispatch: 
   push:
     branches:
-      - master
+      - 'master'
+    branches-ignore:
+      - '.github/workflows/**'
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -11,7 +13,7 @@ jobs:
       - name: Output event data
         run: echo "${{ toJSON(github.event) }}"
       - name: Get code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install dependencies
         run: npm ci
       - name: Test code
