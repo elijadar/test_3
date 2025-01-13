@@ -1,0 +1,50 @@
+name: Deoploy Project in different jobs
+on: [workflow_dispatch]
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Get code
+            uses: actions/checkout@v4
+          - name: Install node
+            uses: actions/setup-node@v4
+            with:
+              node-version: '20'
+          - name: Install dependencies
+            run: npm ci
+          - name: Run lint
+            run: npm run lint
+    test:
+        needs: [lint]
+        runs-on: ubuntu-latest
+        steps:
+          - name: Get code
+            uses: actions/checkout@v4
+          - name: Install node
+            uses: actions/setup-node@v4
+            with:
+              node-version: '20'
+          - name: Install dependencies
+            run: npm ci
+          - name: Run tests
+            run: npm run test
+    build:
+        needs: [test]
+        runs-on: ubuntu-latest
+        steps:
+          - name: Get code
+            uses: actions/checkout@v4
+          - name: Install node
+            uses: actions/setup-node@v4
+            with:
+              node-version: '20'
+          - name: Install dependencies
+            run: npm ci
+          - name: Run build
+            run: npm run build
+    deploy:
+        needs: [lint, test, build]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy project
+              run: echo "Deploying..."
