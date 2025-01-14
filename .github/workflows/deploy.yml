@@ -46,9 +46,7 @@ jobs:
             uses: actions/upload-artifact@v4
             with:
               name: artifact
-              path: |
-                dist
-                package.json
+              path: dist
     deploy:
         needs: [lint, test, build]
         runs-on: ubuntu-latest
