@@ -53,5 +53,9 @@ jobs:
         needs: [lint, test, build]
         runs-on: ubuntu-latest
         steps:
+            - name: Download artifacts
+              uses: actions/download-artifact@v4
+              with:
+                name: artifact
             - name: Deploy project
               run: echo "Deploying..."
