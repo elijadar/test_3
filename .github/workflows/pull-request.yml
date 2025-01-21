@@ -1,4 +1,4 @@
-name: Pull Request Created
+name: Pull Request Check
 on:
   workflow_dispatch: 
   pull_request:
