@@ -87,8 +87,10 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                 name: artifact
-            - name: Output content
-              run: ls -lahR --color
+            - name: Output artifacts content
+              run: ls -laR
+            - name: Output home content
+              run: ls -laR ~/
             - name: Output npm cache directory
               run: echo ${{ needs.lint.outputs.cache-directory }}
             - name: Output filename

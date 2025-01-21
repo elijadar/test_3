@@ -1,9 +1,9 @@
-name: Merged pull request into master
+name: Master check
 on:
   workflow_dispatch: 
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
     # paths-ignore:
     #   - '.github/workflows/*'
 jobs:
