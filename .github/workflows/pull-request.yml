@@ -5,8 +5,6 @@ on:
     types: [opened, synchronize, reopened]
     branches:
       - master
-    # paths-ignore:
-    #   - '.github/workflows/*'
 jobs:
   check-pull-request:
     runs-on: ubuntu-latest
